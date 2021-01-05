@@ -10,7 +10,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 
 private const val BASE_URL = "https://api.pexels.com"
 private const val CONNECTION_TIMEOUT_MS: Long = 10
-private const val OAUTH_TOKEN = "563492ad6f917000010000016dacb63423d84c298dc77eca88b749f9"
 
 object WebClient {
     val client: ApiService by lazy {
@@ -34,3 +33,4 @@ object WebClient {
             .create(ApiService::class.java)
     }
 }
+
