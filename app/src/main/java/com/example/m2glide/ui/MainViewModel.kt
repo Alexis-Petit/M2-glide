@@ -17,7 +17,7 @@ class MainViewModel : ViewModel() {
             val searchResponse = WebClient.client.fetchImages()
             val photosList = searchResponse.photos.map { photo ->
                 Photo(
-                    id = photo.id, url = photo.src.portrait
+                    id = photo.id, url = photo.src.portrait, photographer = photo.photographer
                 )
             }
             mutablePhotosLiveData.postValue(photosList)

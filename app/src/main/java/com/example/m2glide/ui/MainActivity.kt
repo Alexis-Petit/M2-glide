@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.m2glide.databinding.ActivityMainBinding
 
+
 class MainActivity : AppCompatActivity() {
 
     private val mainViewModel: MainViewModel by viewModels()
@@ -17,7 +18,8 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.photosRecyclerView.adapter = photosAdapter
-        binding.photosRecyclerView.layoutManager = LinearLayoutManager(this)
+        val linearManager = LinearLayoutManager(this)
+        binding.photosRecyclerView.layoutManager = linearManager
         mainViewModel.photosLiveData.observe(this,
             Observer { list ->
                 with(photosAdapter) {

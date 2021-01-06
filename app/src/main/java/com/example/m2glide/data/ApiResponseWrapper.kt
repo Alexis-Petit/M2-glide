@@ -7,6 +7,7 @@ data class ApiResponseWrapper(
 data class PhotoResponse(
     val id: String,
     val url: String,
+    val photographer: String,
     val src: Src
 )
 

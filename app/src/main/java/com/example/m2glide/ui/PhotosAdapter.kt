@@ -29,6 +29,7 @@ class PhotosAdapter(val photos: MutableList<Photo> = mutableListOf()) : Recycler
     inner class PhotosViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = PhotoBinding.bind(view)
         fun bind(photo: Photo) {
+            binding.textViewPhotographer.text = photo.photographer
             Glide
                 .with(binding.root.context)
                 .load(photo.url)
