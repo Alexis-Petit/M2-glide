@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.m2glide.R
 import com.example.m2glide.databinding.PhotoBinding
 import com.example.m2glide.domain.Photo
+import kotlin.random.Random
 
 class PhotosAdapter(val photos: MutableList<Photo> = mutableListOf()) : RecyclerView.Adapter<PhotosAdapter.PhotosViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotosViewHolder {
@@ -29,11 +30,19 @@ class PhotosAdapter(val photos: MutableList<Photo> = mutableListOf()) : Recycler
     inner class PhotosViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = PhotoBinding.bind(view)
         fun bind(photo: Photo) {
+            val icon = listOf(R.drawable._10_yen, R.drawable._11_geta, R.drawable._12_stones, R.drawable._13_rice, R.drawable._14_student)
             binding.textViewPhotographer.text = photo.photographer
+            binding.ImageViewIconUser.setImageResource(icon[Random.nextInt( 0, icon.size)])
             Glide
                 .with(binding.root.context)
                 .load(photo.url)
-                .into(binding.imageView)
+                .into(binding.ImageViewPhoto)
+
+
         }
+
+
     }
+
+
 }

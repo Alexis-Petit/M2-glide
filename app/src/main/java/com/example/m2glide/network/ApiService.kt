@@ -8,6 +8,6 @@ const val OAUTH_TOKEN = "563492ad6f917000010000016dacb63423d84c298dc77eca88b749f
 
 interface ApiService {
     @Headers("Authorization: Bearer $OAUTH_TOKEN")
-    @GET("/v1/search?query=nature&per_page=40")
+    @GET("/v1/search?query=nature&per_page=120")
     suspend fun fetchImages(): ApiResponseWrapper
 }
