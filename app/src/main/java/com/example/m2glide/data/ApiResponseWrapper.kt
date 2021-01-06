@@ -11,7 +11,7 @@ data class PhotoResponse(
 )
 
 data class Src(
-    val small: String
+    val portrait: String
 )
 
 
