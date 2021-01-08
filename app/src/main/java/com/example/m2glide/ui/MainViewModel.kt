@@ -12,15 +12,29 @@ import kotlinx.coroutines.launch
 class MainViewModel : ViewModel() {
     private val mutablePhotosLiveData = MutableLiveData<List<Photo>>()
     val photosLiveData: LiveData<List<Photo>> = mutablePhotosLiveData
+    private val query: MutableLiveData<String> = MutableLiveData<String>()
+
     init {
+        query.value="nature"
+        updatePhotos()
+    }
+
+    private fun updatePhotos(){
         viewModelScope.launch {
-            val searchResponse = WebClient.client.fetchImages()
+            val searchResponse = WebClient.client.fetchImages(research = query.value.toString())
             val photosList = searchResponse.photos.map { photo ->
                 Photo(
-                    id = photo.id, url = photo.src.portrait, photographer = photo.photographer
+                        id = photo.id, url = photo.src.portrait, photographer = photo.photographer
                 )
             }
             mutablePhotosLiveData.postValue(photosList)
         }
     }
+
+    fun updateQuery(research: String){
+        query.value = research
+        updatePhotos()
+    }
+
+
 }

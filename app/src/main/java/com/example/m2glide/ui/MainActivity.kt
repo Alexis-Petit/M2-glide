@@ -3,6 +3,8 @@ package com.example.m2glide.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.get
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.m2glide.databinding.ActivityMainBinding
@@ -29,5 +31,16 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         )
+        binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                //Performs search when user hit the search button on the keyboard
+                mainViewModel.updateQuery(p0.toString())
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
     }
 }
