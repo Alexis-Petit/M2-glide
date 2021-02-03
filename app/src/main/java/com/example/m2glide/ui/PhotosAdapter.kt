@@ -4,7 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.request.RequestOptions
 import com.example.m2glide.R
 import com.example.m2glide.databinding.PhotoBinding
 import com.example.m2glide.domain.Photo
@@ -36,6 +39,8 @@ class PhotosAdapter(val photos: MutableList<Photo> = mutableListOf()) : Recycler
             Glide
                 .with(binding.root.context)
                 .load(photo.url)
+                .centerCrop()
+                .placeholder(R.drawable.spinner)
                 .into(binding.ImageViewPhoto)
 
 
